@@ -289,7 +289,7 @@ function buildCli() {
 
       return true;
     })
-    .strict()
+    .strictOptions()
     .help();
 }
 
@@ -383,13 +383,15 @@ async function calcPrompt(args: ParsedArgs): Promise<string> {
 }
 
 function calcPositionalPrompt(args: ParsedArgs): string | undefined {
-  const first = args._[0];
+  const words = args._.filter((v): v is string => typeof v === 'string');
 
-  if (typeof first !== 'string') {
+  if (words.length === 0) {
     return undefined;
   }
 
-  return first.trim() || undefined;
+  const prompt = words.join(' ').trim();
+
+  return prompt || undefined;
 }
 
 function calcSize(args: ParsedArgs): ApiSize {
