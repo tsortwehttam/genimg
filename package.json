@@ -1,0 +1,26 @@
+{
+  "name": "genimg",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "genimg": "bin/genimg.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "genimg": "tsx src/genimg.ts",
+    "test": "tsx --test test/*.test.ts",
+    "verify": "yarn build && yarn test"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "@types/yargs": "^17.0.35",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "openai": "^6.25.0",
+    "tsx": "^4.21.0",
+    "yargs": "^18.0.0"
+  }
+}
